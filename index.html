@@ -11,6 +11,27 @@
   </style>
 </head>
 <body>
+  <head>
+  <title>Textbox to Excel</title>
+</head>
+<body>
+  <h2>Enter Data</h2>
+  <input type="text" id="myTextbox" placeholder="Type something here..." />
+  <button onclick="sendData()">Submit</button>
+
+  <script>
+    async function sendData() {
+      const value = document.getElementById("myTextbox").value;
+      // Send to backend
+      await fetch("/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: value })
+      });
+      alert("Data sent to Excel!");
+    }
+  </script>
+
   <h1>Welcome to My Website!</h1>
   <p>This site works on mobile browsers 🚀</p>
   <p>Hello World</p>
